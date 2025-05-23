@@ -5,13 +5,13 @@ import Image from 'next/image';
 import styles from '../login/login.module.css';
 import { resetPassword } from '../utils/auth';
 
-export default function LoginReset() {
-  const [formData, setFormData] = useState({
+export default function LoginReset() {  const [formData, setFormData] = useState({
     email: '',
     newPassword: '',
     confirmPassword: '',
   });
-  const [showPassword, setShowPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [logoError, setLogoError] = useState(false);
@@ -69,9 +69,8 @@ export default function LoginReset() {
               onError={() => setLogoError(true)}
               style={{ display: logoError ? 'none' : 'block' }}
             />
-          </div>
-          <div>
-            <span className={styles.HeadingLogins}>Reset Password</span>
+          </div>          <div>
+            <span className={styles.HeadingLogins}>TVS QLQD Reset Password</span>
           </div>
           <form onSubmit={handleSubmit}>
             <div className={styles.LoginEmails}>
@@ -84,10 +83,9 @@ export default function LoginReset() {
                 onChange={handleChange}
               />
             </div>
-            <div className={styles.LoginEmails}>
-              <input
+            <div className={styles.LoginEmails}>              <input
                 className={styles.LoginEmailInput}
-                type={showPassword ? 'text' : 'password'}
+                type={showNewPassword ? 'text' : 'password'}
                 placeholder="New Password*"
                 name="newPassword"
                 value={formData.newPassword}
@@ -95,20 +93,26 @@ export default function LoginReset() {
               />
               <span 
                 className={styles.passIcon}
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => setShowNewPassword(!showNewPassword)}
               >
-                {showPassword ? '👁️' : '👁️‍🗨️'}
+                {showNewPassword ? '👁️' : '👁️‍🗨️'}
               </span>
             </div>
             <div className={styles.LoginEmails}>
               <input
                 className={styles.LoginEmailInput}
-                type={showPassword ? 'text' : 'password'}
+                type={showConfirmPassword ? 'text' : 'password'}
                 placeholder="Confirm New Password*"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
               />
+              <span 
+                className={styles.passIcon}
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
+              </span>
             </div>
             <div className={styles.LoginButtonParent}>
               <button className={styles.LoginButton} type="submit">

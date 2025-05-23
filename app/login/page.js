@@ -119,12 +119,11 @@ export default function Login() {
               height={50}
               priority
             />
-          </div>
-          <div>
-            <span className={styles.HeadingLogins}>
-              {isResetMode ? 'Reset Password' : 'Admin Login'}
-            </span>
-          </div>
+          </div>            <div>
+              <span className={styles.HeadingLogins}>
+                {isResetMode ? 'Reset Password' : 'TVS QLQD Admin Login'}
+              </span>
+            </div>
           <form onSubmit={handleSubmit}>
             <div className={styles.LoginEmails}>
               <input

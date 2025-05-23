@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { logout } from '../utils/auth';
 
 const Header = ({ department, setDepartment }) => {
@@ -36,12 +37,21 @@ const Header = ({ department, setDepartment }) => {
           {showDropdown && (
             <div className="dropdown">
               <button onClick={handleLogout} className="dropdownItem">
-                Logout
+                <Image
+                  src="/logout-1024.webp"
+                  alt="Logout"
+                  width={20}
+                  height={20}
+                  className="logoutIcon"
+                  priority
+                />
+                <span className="logoutText">Logout</span>
               </button>
             </div>
           )}
         </div>
-      </div>      <style jsx>{`
+      </div>      
+      <style jsx>{`
         .header {
           display: flex;
           align-items: center;
@@ -140,19 +150,33 @@ const Header = ({ department, setDepartment }) => {
         }
 
         .dropdownItem {
-          padding: 8px 16px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
           width: 100%;
-          text-align: left;
-          background: none;
+          padding: 8px 16px;
           border: none;
+          background: none;
           cursor: pointer;
           font-size: 14px;
           color: #333;
-          transition: background-color 0.2s;
+          transition: all 0.2s ease;
         }
 
         .dropdownItem:hover {
           background-color: #f5f5f5;
+        }
+
+        .logoutIcon {
+          transition: transform 0.2s ease;
+        }
+
+        .dropdownItem:hover .logoutIcon {
+          transform: translateX(3px);
+        }
+
+        .logoutText {
+          margin-left: 4px;
         }
 
         @media (max-width: 768px) {
